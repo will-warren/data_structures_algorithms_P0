@@ -1,0 +1,50 @@
+Run Times for P0
+Author: Will Warren
+
+Note - I am not sure how to calculate (or if I should ignore) the run times of built in functions I use. My googling showed
+that it should be considered, but I did not include it here as I couldn't find a reliable way to calculate those run times. 
+(of something like len(array) or string.replace() or the regex functions I used in Task3). My run times do not include the 
+run times for the file readers, which are n. I am using => to indicate I am simplifying the run time
+
+Task 0:
+lines executed -> 8
+
+Task 1:
+find_all_unique_nums() -> 2n + 8 => 2n  
+
+Task 2:
+find_all_unique_nums()-> n 
+total_time_for_num() -> n^2 + 7
+find_max_time_on_phone() -> n + 5
+other lines executed -> 2
+
+total = n + (n^2 + 7) + (n + 5) + 2 => (n^4 + 14) => n^4
+    
+Task 3: 
+Part A:
+string_test() -> 1
+grab_code() -> 2 
+make_code_list() -> n + 6
+print_answer -> n + 2
+other lines executed -> 3
+
+total = (n + 6) + (n + 2) + 6 -> 2n + 14 -> 2n
+
+Part B:
+find_all_fixed_line() -> n + 2
+find_all_calls_to_fixed_line() -> n + 2
+string_test() -> 2 (called twice)
+find_percentage() -> 3
+other lines executed -> 2
+
+total = (n + 2) + (n + 2) + 7 => 2n + 11 => 2n 
+
+Task 4:
+find_all_telemarketers() -> 2n + 6
+print_all_telemarketers() -> n + 1
+
+total = (2n + 6) + (n +1) => 3n + 7 => 2n
+ 
+
+
+
