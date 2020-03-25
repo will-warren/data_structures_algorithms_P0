@@ -10,21 +10,21 @@ i.e. as the number of calls grows the number of entries in the collection of cal
     
 Task 3: 
     Part A: O(N logN) - The sorted function has a runtime of O(N logN) and it is the dominant runtime. My solution also involves looping through each record
-    in the call data set (O(n)), testing if the string startsWith '(080)' (O(1)), and if so, splices a string from its beginning to the index of the closing 
-    parenthesis plus one. If it is a fixed line, we use the regex match group as the code, if not we splice the first four digits from the string, (that is, 
-    the area code for mobile numbers) We then add whichever code we have grabbed to the set. When this loop (O(N)) is finished we return a sorted list of the 
-    set, which uses the sorted function to perform sorting and has dominant runtime of O(N log N).
+    in the call data set (O(n)), testing of the string startsWith '(080)' (O(1)), and if so, splices a string from its beginning to the index of the closing 
+    parenthesis plus one. If not we splice the first four digits from the string, (that is, the area code for mobile numbers) We then add whichever code we 
+    have grabbed to the set. When this loop (O(N)) is finished we return a sorted list of the set, which uses the sorted function to perform sorting and 
+    has dominant runtime of O(N log N).
 
     I changed my original solution using a regular expression because I found that regular expressions can have an unbounded runtime, because using \d* as I did, 
     will return all digits. If an entry had ten million digits between the parenthesis, it will try to match all of them. Similarly for ten trillion digits, and so on.
-    This is obviously not a great solution in terms of time complexity. Regular Expressions can be handy, but this has shown my they can also be more trouble than 
+    This is obviously not a great solution in terms of time complexity. Regular Expressions can be handy, but this has shown me they can also be more trouble than 
     they are worth.
 
     Part B: O(n) - Similar to Task 2, the size of the calls data set determines the runtime for this algorithm; the second loop through the (080) numbers
     will grow in relation to the calls data set.
 
 Task 4: O(N LogN) - Similar to Task 3 Part A, the use of the sorted function has runtime O(N logN) and is the dominant term. I have two other loops, which are 
-O(m * n). I create a set for possible telemarketers and a set for numbers I know that are not telemarketers. I then loop through the record in calls, added 
+O(m * n). I create a set for possible telemarketers and a set for numbers I know that are not telemarketers. I then loop through the records in calls, added 
 callers to possible telemarketers set, and numbers that have received calls to the not telemarketers set. I also loop through texts and add numbers sending or receiving texts to the not telemarketers set. I then find the difference
 between them (O(len(a) - len(b))), and return a sorted list of that difference. This removes all the numbers in the not telemarketers set that are present in the 
 possible telemarketers set, leaving us only the numbers that meet the criteria for possible telemarketers.
