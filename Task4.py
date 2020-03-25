@@ -39,7 +39,7 @@ def find_all_telemarketers():
         not_telemarketers.add(record[0])
         not_telemarketers.add(record[1])
 
-    return possible_telemarketers - not_telemarketers
+    return sorted(possible_telemarketers - not_telemarketers)
 
 print("These numbers could be telemarketers: ")
 print("\n".join(find_all_telemarketers()))

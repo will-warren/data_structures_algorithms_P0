@@ -51,10 +51,8 @@ The percentage should have 2 decimal digits
 def string_test(text, test):
   return text.startswith(test)
 
-
 def grab_code(phone_number):
-  # if fixed line, use regex, else use substring for first 4 digits (no one is calling a telemarketer, sneaky trick though ;) )
-  return re.search(re.compile('^\(?\d*\)?'), phone_number).group() if string_test(phone_number, '(') else phone_number[:4]
+  return phone_number[:phone_number.index(')') + 1] if string_test(phone_number, '(') else phone_number[:4]
 
 def make_code_list():
   code_list = set()
