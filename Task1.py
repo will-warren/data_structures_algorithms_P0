@@ -20,21 +20,15 @@ Print a message:
 """
 
 def collect_uniq_phone_nums():
-    uniq_nums = []
+    uniq_nums = set()
 
-    for record in texts:
-        if(record[0] not in uniq_nums):
-            uniq_nums.append(record[0])
-        
-        if(record[1] not in uniq_nums):
-            uniq_nums.append(record[1])
+    for call in calls:
+        uniq_nums.add(call[0])
+        uniq_nums.add(call[1])
 
-    for record in calls:
-        if(record[0] not in uniq_nums):
-            uniq_nums.append(record[0])
-        
-        if(record[1] not in uniq_nums):
-            uniq_nums.append(record[1])
+    for text in texts:
+        uniq_nums.add(text[0])
+        uniq_nums.add(text[1])
 
     return uniq_nums
     

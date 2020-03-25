@@ -1,49 +1,21 @@
 Run Times for P0
 Author: Will Warren
 
-Note - I am not sure how to calculate (or if I should ignore) the run times of built in functions I use. My googling showed
-that it should be considered, but I did not include it here as I couldn't find a reliable way to calculate those run times. 
-(of something like len(array) or string.replace() or the regex functions I used in Task3). My run times do not include the 
-run times for the file readers, which are n. I am using => to indicate I am simplifying the run time
+Task 0: O(1) - These operations will take the same runtime no matter the size of inputs (m & n, texts and calls, respectively)
 
-Task 0:
-lines executed -> 8
+Task 1: O(m + n) - This runtime will grow linearly as m (texts) and n (calls) grow
 
-Task 1:
-find_all_unique_nums() -> 2n + 8 => 2n  
-
-Task 2:
-find_all_unique_nums()-> n 
-total_time_for_num() -> n^2 + 7
-find_max_time_on_phone() -> n + 5
-other lines executed -> 2
-
-total = n + (n^2 + 7) + (n + 5) + 2 => (n^4 + 14) => n^4
+Task 2: O(n) - This runtime will grow linearly as the n number of calls grows. The loop to find the max call time changes its run time in relation to n,
+i.e. as the number of calls grows the number of entries in the collection of call times will grow.
     
 Task 3: 
-Part A:
-string_test() -> 1
-grab_code() -> 2 
-make_code_list() -> n + 6
-print_answer -> n + 2
-other lines executed -> 3
+    Part A: O(N logN) - The sorted function has a runtime of O(N logN) and it is the dominant runtime.
 
-total = (n + 6) + (n + 2) + 6 -> 2n + 14 -> 2n
+    Part B: O(n) - Similar to Task 2, the size of the calls data set determines the runtime for this algorithm; the second loop through the (080) numbers
+    will grow in relation to the calls data set.
 
-Part B:
-find_all_fixed_line() -> n + 2
-find_all_calls_to_fixed_line() -> n + 2
-string_test() -> 2 (called twice)
-find_percentage() -> 3
-other lines executed -> 2
+Task 4: O(m +n) - This runtime will grow linearly as the size of m (texts) and n (calls) grows.
 
-total = (n + 2) + (n + 2) + 7 => 2n + 11 => 2n 
-
-Task 4:
-find_all_telemarketers() -> 2n + 6
-print_all_telemarketers() -> n + 1
-
-total = (2n + 6) + (n +1) => 3n + 7 => 2n
  
 
 

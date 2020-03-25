@@ -20,16 +20,6 @@ Print messages:
 "Last record of calls, <incoming number> calls <answering number> at time <time>, lasting <during> seconds"
 """
 
-def find_first_text():
-    return texts[0]
-
-def find_last_call():
-    return calls[len(calls)-1]
-
-
-first_text_data = find_first_text()
-last_call_data = find_last_call()
-
-print("First record of texts, {} texts {} at time {}".format(first_text_data[0], first_text_data[1], first_text_data[2]))
-print("Last record of calls, {} calls {} at time {}, lasting {} seconds".format(last_call_data[0], last_call_data[1], last_call_data[2], last_call_data[3]))
+print("First record of texts, {} texts {} at time {}".format(*texts[0]))
+print("Last record of calls, {} calls {} at time {}, lasting {} seconds".format(*calls[-1]))
 

@@ -57,25 +57,19 @@ def grab_code(phone_number):
   return re.search(re.compile('^\(?\d*\)?'), phone_number).group() if string_test(phone_number, '(') else phone_number[:4]
 
 def make_code_list():
-  code_list = []
+  code_list = set()
 
   for record in calls:
-    call_code = grab_code(record[1])
+    #if is bgl area code
+    if(string_test(record[0], '(080)')):
+      code_list.add(grab_code(record[1]))
 
-    if(call_code not in code_list):
-      code_list.append(call_code)
-
-  list.sort(code_list)
-  return code_list
-
-def print_answer(codes):
-  print("The numbers called by people in Bangalore have codes:")
-  for code in codes:
-    print(code)
+  return sorted(code_list)
 
 codes = make_code_list()
 print("Part A\n")
-print_answer(codes)
+print("The numbers called by people in Bangalore have codes:")
+print(*codes, sep="\n")
 
 
 # B
@@ -93,7 +87,7 @@ def find_percentage():
   all_calls_from_fixed_line = find_all_fixed_line()
   all_calls_to_fixed_line = find_all_calls_to_fixed_line(all_calls_from_fixed_line)
 
-  return float(len(all_calls_from_fixed_line) / len(all_calls_to_fixed_line))
+  return float(len(all_calls_to_fixed_line) / len(all_calls_from_fixed_line))*100
 
 print("\n\nPart B\n")
 print(f"{find_percentage():.2f} percent of calls from fixed lines in Bangalore are calls to other fixed lines in Bangalore.")

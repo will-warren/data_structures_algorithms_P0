@@ -25,25 +25,21 @@ Print a message:
 The list of numbers should be print out one per line in lexicographic order with no duplicates.
 """
 
-# We know that telemarketers phone numbers start with 140.
-# List all numbers that start with code 140
-
+# set of outgoing calls
+# set of text numbers, and callees
 def find_all_telemarketers():
-    all_telemarketers = []
+    possible_telemarketers = set()
+    not_telemarketers = set()
+
     for record in calls:
-        if(record[0].startswith('140') and ' ' not in record[0] and record[0] not in all_telemarketers):
-            all_telemarketers.append(record[0])
+        possible_telemarketers.add(record[0])
+        not_telemarketers.add(record[1])
 
     for record in texts:
-        if(record[0].startswith('140') and ' ' not in record[0] and record[0] not in all_telemarketers):
-            all_telemarketers.append(record[0])
+        not_telemarketers.add(record[0])
+        not_telemarketers.add(record[1])
 
-    return all_telemarketers
-
-def print_all_telemarketers(telemarketers):
-    for tm in telemarketers:
-        print(tm)
-    
+    return possible_telemarketers - not_telemarketers
 
 print("These numbers could be telemarketers: ")
-print_all_telemarketers(find_all_telemarketers())
+print("\n".join(find_all_telemarketers()))
